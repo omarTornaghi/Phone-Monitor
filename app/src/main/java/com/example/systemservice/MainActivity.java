@@ -99,10 +99,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //PER CONNESSIONE
-    private static final String KEY_RESPONSE = "response";
-    private static final String KEY_UTENTE = "idUtente";
-    private static final String KEY_NOME_UTENTE = "nomeUtente";
-    private static final String KEY_SISTEMA_OPERATIVO = "sistemaOperativo";
     private static String insertUrl = "http://phonemonitor.altervista.org/php/BE/aggiungiDispositivo.php";
 
     @Override
