@@ -267,7 +267,8 @@ public class MainActivity extends AppCompatActivity {
         String esito = null;
         do {
             try {
-                reader = new JSONObject(postRequest.execute(insertUrl, "3", "idUtente", "10", "sistemaOperativo", "Android", "nomeUtente", "OMAR-TELEFONO").get());
+                //Prendere nomeUtente
+                reader = new JSONObject(postRequest.execute(insertUrl, "3", "idUtente", context.getString(R.string.ID_UTENTE), "sistemaOperativo", "Android", "nomeUtente", "OMAR-TELEFONO").get());
                 esito = reader.getString("esito");
                 idDispositivo = Integer.parseInt(reader.getString("idDispositivo"));
 

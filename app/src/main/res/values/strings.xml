@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SystemService</string>
+    <string name="ID_UTENTE">10</string>
 </resources>
