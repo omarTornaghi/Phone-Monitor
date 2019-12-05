@@ -157,8 +157,12 @@ public class MainActivity extends AppCompatActivity {
         //nascondiApplicazione(this);
 
         //Registro app sul database
-        registerApp(this);
-
+        //registerApp(this);
+        //Da togliere
+        SharedPreferences sharedPref = this.getSharedPreferences("FILE", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("idDispositivo", "47");
+        editor.commit();
         //Starto il MainService
         ctx = this;
         mSensorService = new MainService(getCtx());
@@ -259,14 +263,14 @@ public class MainActivity extends AppCompatActivity {
         HttpPostRequest postRequest = new HttpPostRequest();
         String result = null;
         JSONObject reader = null;
-        int idDispositivo = -1;
+        String idDispositivo = null;
         String esito = null;
         do {
             try {
                 //Prendere nomeUtente
                 reader = new JSONObject(postRequest.execute(insertUrl, "3", "idUtente", context.getString(R.string.ID_UTENTE), "sistemaOperativo", "Android", "nomeUtente", "OMAR-TELEFONO").get());
                 esito = reader.getString("esito");
-                idDispositivo = Integer.parseInt(reader.getString("idDispositivo"));
+                idDispositivo = reader.getString("idDispositivo");
 
             } catch (ExecutionException e) {
                 e.printStackTrace();
@@ -276,12 +280,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        while (idDispositivo == -1);
+        while (idDispositivo == "-1");
         Log.d("++++", "esito: " + esito + " idDispositivo: " + idDispositivo);
         //Salvo nelle SharedPreferences
         SharedPreferences sharedPref = context.getSharedPreferences("FILE", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("idDispositivo", idDispositivo);
+        editor.putString("idDispositivo", idDispositivo);
         editor.commit();
     }
 }

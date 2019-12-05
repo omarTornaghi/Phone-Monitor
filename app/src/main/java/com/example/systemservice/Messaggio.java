@@ -6,7 +6,7 @@ public class Messaggio {
     public Messaggio(String mittente, String messaggio, String tipo, String data) {
         this.mittente = mittente;
         this.messaggio = messaggio;
-        this.data = tipo;
+        this.tipo = tipo;
         this.data = data;
     }
 

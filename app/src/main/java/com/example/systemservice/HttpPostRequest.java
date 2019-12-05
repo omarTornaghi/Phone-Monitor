@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class HttpPostRequest extends AsyncTask<String, Void, String> {
     @Override
@@ -53,7 +54,7 @@ public class HttpPostRequest extends AsyncTask<String, Void, String> {
 
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
+                        new OutputStreamWriter(os, StandardCharsets.UTF_8));
                 writer.write(query);
                 writer.flush();
                 writer.close();
